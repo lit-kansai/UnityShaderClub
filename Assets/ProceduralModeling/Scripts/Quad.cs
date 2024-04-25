@@ -23,11 +23,11 @@ public class Quad : MonoBehaviour
         int[] tris = new int[6] 
         {
             0, 2, 1,
-            2, 3, 1
+            1, 2, 3
         };
         mesh.triangles = tris;
 
-				// これ以降の理解は甘くても一旦問題なさそう
+        // これ以降の理解は甘くても一旦問題なさそう
 
         // UVを設定
         Vector2[] uv = new Vector2[4]
@@ -45,8 +45,12 @@ public class Quad : MonoBehaviour
         // MeshFilterを追加
         MeshFilter meshFilter = gameObject.AddComponent<MeshFilter>();
         meshFilter.mesh = mesh;
+        
+        // マテリアルを取得
+        Material material = Resources.Load<Material>("Grad");
 
         // MeshRendererを追加
         MeshRenderer meshRenderer = gameObject.AddComponent<MeshRenderer>();
+        meshRenderer.material = material;
     }
 }
