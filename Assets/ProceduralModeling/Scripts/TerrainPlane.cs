@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Plane : MonoBehaviour
+public class TerrainPlane : MonoBehaviour
 {
     // Start is called before the first frame update
     void Start()
@@ -25,7 +25,7 @@ public class Plane : MonoBehaviour
 
                 vertices.Add(new Vector3(
                     (rx - 0.5f) * widthSegments,
-                    0f,
+                    Depth(rx,ry),
                     (0.5f - ry) * heightSegments
                 ));
                 uv.Add(new Vector2(rx, ry));
@@ -64,7 +64,19 @@ public class Plane : MonoBehaviour
 
         // MeshRendererを追加
         MeshRenderer meshRenderer = gameObject.AddComponent<MeshRenderer>();
+
     }
 
+    float Depth(float u, float v) {
+        float uScale = 1.2f;
+        float vScale = 1.5f;
+        float uOffset = 0f;
+        float vOffset = 0f;
+        return Mathf.PerlinNoise(u * uScale + uOffset, v * vScale + vOffset) * 3;
+    }
     // Update is called once per frame
+    void Update()
+    {
+
+    }
 }
