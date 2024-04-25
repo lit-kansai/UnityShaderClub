@@ -7,6 +7,7 @@ public class Quad : MonoBehaviour
     void Start()
     {
         // 新しいMeshを作成
+        // test
         Mesh mesh = new Mesh();
 
         // 頂点座標を設定
